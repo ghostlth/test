@@ -27,7 +27,7 @@ def send(request,user):
 
     message = MIMEText(mes, 'html', 'utf-8')
     message['From'] = Header('test', 'utf-8')
-    message['To'] = Header('冰是沉默的水', 'utf-8')
+    message['To'] = Header('用户', 'utf-8')
     message['Subject'] = Header('test', 'utf-8')
 
     try:
