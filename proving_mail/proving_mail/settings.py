@@ -55,7 +55,7 @@ ROOT_URLCONF = 'proving_mail.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [r'E:\site\proving_mail\templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SendMail</title>
+<script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>
+
+
+
+    function show_result(){
+        var xmlhttp;
+        var input_val
+        input_val = document.getElementById('1').value
+        if (window.XMLHttpRequest)
+        {
+            //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
+            xmlhttp=new XMLHttpRequest();
+        }
+        else
+        {
+            // IE6, IE5 浏览器执行代码
+            xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.onreadystatechange=function(){
+            document.getElementById('test1').innerHTML=xmlhttp.responseText;
+        }
+        xmlhttp.open('GET','/show_result?user='+input_val,true);
+        xmlhttp.send();
+    }
+</script>
+<script>
+$(document).ready(function(){
+    var t = $('#test1')
+    if (t.html().stringify() != '发送失败'){
+        t.bind('DOMNodeInserted',function(){
+            alert(typeof[t.html().toString()]);
+            document.getElementById('test2').style.display='';
+        });
+    }
+});
+document.getElementById('test2').style.display='';
+</script>
+</head>
+<body>
+<form class="box">
+    <h3>找回密码</h3>
+    输入公司邮箱：<input type="text" name="user" id="1">@szhq.com <br>
+    <input type="button" value="提交" onclick="show_result()">
+</form>
+<div id="test1"></div><br>
+<div id="test2" style="display:None">
+    <p>输入验证码</p>
+    <input type="text" name="code" id="2"><input type="button" value="验证" onclick="proving()">
+</div>
+</body>
+</html>

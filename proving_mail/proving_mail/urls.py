@@ -19,6 +19,6 @@ from message import views as message_views
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^$',message_views.sendmail,name='sendmail'),
-    url(r'sendmail/$',message_views.show_result,name='result'),
+    url(r'^sendmail/$',message_views.sendmail,name='sendmail'),
+    url(r'show_result',message_views.show_result,name='result'),
 ]
