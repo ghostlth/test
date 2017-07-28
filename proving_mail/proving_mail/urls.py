@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^sendmail/$',message_views.sendmail,name='sendmail'),
     url(r'show_result',message_views.show_result,name='result'),
+    url(r'change_pwd',message_views.change_pwd,name='change'),
 ]

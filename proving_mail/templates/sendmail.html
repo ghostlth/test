@@ -5,13 +5,12 @@
     <title>SendMail</title>
 <script src="https://apps.bdimg.com/libs/jquery/2.1.4/jquery.min.js"></script>
 <script>
-
-
-
+    var res;
+    var input_val;
     function show_result(){
         var xmlhttp;
-        var input_val
-        input_val = document.getElementById('1').value
+        input_val = document.getElementById('1').value;
+
         if (window.XMLHttpRequest)
         {
             //  IE7+, Firefox, Chrome, Opera, Safari 浏览器执行代码
@@ -23,24 +22,57 @@
             xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
         }
         xmlhttp.onreadystatechange=function(){
-            document.getElementById('test1').innerHTML=xmlhttp.responseText;
+            res = xmlhttp.responseText;
+            var result = ''
+            for (var i =0;i<4;i++){
+                result = result.concat(res[i]);
+            }
+            document.getElementById('test1').innerHTML=result;
         }
         xmlhttp.open('GET','/show_result?user='+input_val,true);
         xmlhttp.send();
+    }
+
+    function proving(){
+        var code = document.getElementById('2').value
+        var correct_code = ''
+        for (var i = 4 ;i<10;i++){
+            correct_code = correct_code.concat(res[i]);
+        }
+        if (correct_code == code){
+            alert('验证成功');
+            change_pwd();
+        }else{
+            alert('验证失败')
+        }
+    }
+</script>
+<script>
+    function change_pwd(){
+    input_val = document.getElementById('1').value;
+    var info = {'userid':input_val}
+    $.ajax({
+        type:'GET',
+        url:'/change_pwd?userid='+input_val,
+        success:function(respone){
+            alert(respone)
+        }
+    })
     }
 </script>
 <script>
 $(document).ready(function(){
     var t = $('#test1')
-    if (t.html().stringify() != '发送失败'){
-        t.bind('DOMNodeInserted',function(){
-            alert(typeof[t.html().toString()]);
+
+    t.bind('DOMNodeInserted',function(){
+        if (t.text() == '发送成功'){
             document.getElementById('test2').style.display='';
-        });
-    }
+        };
+    });
 });
 document.getElementById('test2').style.display='';
 </script>
+
 </head>
 <body>
 <form class="box">
@@ -53,5 +85,7 @@ document.getElementById('test2').style.display='';
     <p>输入验证码</p>
     <input type="text" name="code" id="2"><input type="button" value="验证" onclick="proving()">
 </div>
+<button onclick="change_pwd()">test</button>
+<p id="result">test</p>
 </body>
 </html>
