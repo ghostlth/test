@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="calendar.css">
+    <title>日历</title>
+</head>
+<body>
+<div class="calendar" id = "calendar"></div>
+<form class="form" id="form">
+    <span class="form-span">日期：</span>
+    <input type="date" class="input" id="inputDate">
+    <br>
+    <span class="form-span">简述：</span>
+    <input type="text" class="input" id="inputMsg">
+    <br>
+    <input type="button" class="button" value="确认" onclick="submitDate()">
+</form>
+<script type="text/javascript" src="calendar.js"></script>
+</body>
+<script type="text/javascript">
+    function submitDate() {
+        var form = document.getElementById('form');
+        var _date = document.createElement('input');
+        _date.setAttribute('type','hidden');
+        _date.setAttribute('name','importDate');
+        var _inputDate = document.getElementById('inputDate').value;
+        var msg = document.getElementById('inputMsg').value;
+        //判断输入不能为空
+        if(_inputDate==""||msg ==""){
+            return
+        }
+
+        var inputDate = _inputDate.substr(0,4)+_inputDate.substr(5,2)+_inputDate.substr(8,2);
+        console.log(inputDate+msg);
+        _date.value = inputDate+"|"+msg;
+        form.appendChild(_date);
+    }
+</script>
+</html>

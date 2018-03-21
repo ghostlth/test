@@ -1,0 +1,81 @@
+*{
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    text-align: center;
+}
+
+.calendar{
+    width: 480px;
+    height: auto;
+    display: inline-block;
+}
+
+.calendar .calendar-title-box{
+    position: relative;
+    width: 100%;
+    height: 72px;
+    line-height: 72px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+    font-size: 25px;
+    cursor: pointer;
+}
+
+.calendar-table{
+    width: 100%;
+    border-collapse: collapse;
+    text-align: center;
+}
+.calendar-table tr{
+    height: 60px;
+    line-height: 60px;
+}
+
+.currentDay{
+    color: red;
+}
+.currentMonth{
+    color: #999;
+}
+.otherMonth{
+    color: #ede;
+}
+
+.calendar .prev-month{
+    position: absolute;
+    top: 24px;
+    left: 0 ;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-left: 0;
+    border-right: 16px solid #999;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    cursor: pointer;
+}
+.calendar .next-month{
+    position: absolute;
+    top: 24px;
+    right: 0 ;
+    display: inline-block;
+    width: 0;
+    height: 0;
+    border-right: 0;
+    border-left: 16px solid #999;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    cursor: pointer;
+}
+.importDate{
+    background-color: #e4db0f;
+    border-radius: 15px;
+}
+.form{
+    display: table;
+    margin: 0 auto;
+    text-align: left;
+}
